@@ -51,7 +51,9 @@
 						<p>Temprature: </p><div id="temp" class="temp"></div>
                     </button>
                     <button type="button" class="list-group-item">
-						<p>Weather: </p><div id="weatherDesc" class="weatherDesc"></div>
+						<p>Weather: </p><div id="weatherDesc" class="weatherDesc">
+                            <!-- <img class="mb-4" src="http://openweathermap.org/img/w/10d" id="weaterIcon"> -->
+                        </div>
                     </button>
                     <button type="button" class="list-group-item">
 						<p>Cloud coverage: </p><div id="clouds" class="clouds"></div>
@@ -62,7 +64,7 @@
     <script>
 
         $("#results").hide();
-        // $("#results").hide();
+        $("#results").hide();
 
         $("#userInput").submit(function(event){
             event.preventDefault();
@@ -89,10 +91,19 @@
                 $("div#weatherDesc").empty();
                 for (i=0;i<obj.weather.length;i++){
                     var weather = obj.weather[i].main;
+                    // var img = new Image();
+                    // var div = document.getElementById('weatherIcon');
+
+                    // img.onload = function() {
+                    //     div.appendChild(img);
+                    // };
+
+                    // img.src = 'http://openweathermap.org/img/w/'+obj.weather[i].icon;
+
                     if(i == obj.weather.length-1){
-                        $("div#weatherDesc").append(weather);
+                        $("div#weatherDesc").append(weather /*+ img.src*/);
                     } else {
-                        $("div#weatherDesc").append(weather+', ');
+                        $("div#weatherDesc").append(weather /*+ ' ' + img.src*/ + ', ');
                     }
                 }
 
